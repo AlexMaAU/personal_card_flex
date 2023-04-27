@@ -1,0 +1,347 @@
+/* Page Default Settings*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+*::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: rgb(227, 226, 224);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Card Container */
+.card_box {
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.card_container {
+
+}
+
+/* Card Header */
+.card_header {
+    background-color: #2aa12a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.1rem 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.card_header .head_info {
+    display: flex;
+    align-items: center;
+    
+}
+
+.card_header .head_info--description {
+    margin-left: 0.15rem;
+}
+
+.card_header .head_info--description h3 {
+    font-size: 0.2rem;
+}
+
+.card_header .head_info--description p {
+    font-size: 0.12rem;
+}
+
+.card_header .head_info img{
+    width: 0.6rem;
+}
+
+.card_header_social {
+    display: flex;
+    flex-direction: column;
+}
+
+.card_header_social p {
+    font-size: 0.1rem;
+    margin-bottom: 0.05rem;
+}
+
+.card_header_social .social_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_header_social .social_list li {
+    list-style-type: none;
+    background-color: white;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 0.25rem;
+    font-size: 0.12rem;  /*font awesome 是一种字体，控制图标的大小，是通过font-size 来实现的*/
+    margin-right: 0.1rem;
+}
+
+.card_header_social .social_list li i {
+    color: #2aa12a;
+}
+
+.card_body_box {
+    display: flex;
+}
+
+/* Card Body-aside */
+.card_body_box .card_nav_container {
+    border-right: 0.02rem solid rgb(227, 226, 224);
+    /*
+    Flex和Grid其实都是一个套路，如果是使用Flex布局，先设置 
+    .card_nav_container {flex: 1; }
+    .card_user_info_container {flex: 4;}
+    这表示把 .card_body_box 划分成2部分，一部分占据1/5的宽度，另一部分占据4/5的宽度。
+    技巧：先把页面通过 flex:n 来把页面布局都划分好，再去调整每个容器内的元素位置。flex:n 写在 display:flex 的父级容器的直系子元素中。
+
+    注意：Flex和Grid布局，要对页面的版块进行排版的时候，Flex要使用flex:n，Grid要使用fr单位，这样才能实现响应式，千万不要写成固定的尺寸，比如用px或者rem来布局，这样会出现屏幕尺寸改变后内容溢出边框的问题。
+    */
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card_body_box .card_nav_container .card_nav {
+    font-size: 0.2rem;
+}
+
+.card_body_box .card_nav_container .card_nav li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    height: 0.3rem;
+}
+
+.card_body_box .card_nav_container .card_nav .active{
+    color: white;
+    background-color: #2aa12a;
+}
+
+.card_body_box .card_nav_container .card_nav li i {
+    font-size: 0.12rem;
+}
+
+.card_body_box .card_nav_container .card_nav li div {
+    font-size: 0.1rem;
+}
+
+.card_body_box .card_nav_container .card_nav li .nav_icon {
+    width: 0.35rem;
+    text-align: center;
+}
+
+/* Card Body-main content */
+.card_body_box .card_user_info_container {
+    display: flex;
+    align-items: center;
+    flex: 4;
+}
+
+.card_body_box .card_user_info_container .display_img_box {
+    text-align: center;
+    flex: 2;
+}
+
+.card_body_box .card_user_info_container .display_img_box a img {
+    width: 80%;
+    margin-top: 0.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.card_body_box .card_user_info_container .personal_info_box {
+    display: flex;
+    flex-direction: column;
+    flex: 1.5;
+    padding-right: 0.15rem;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .personal_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .personal_info p {
+    font-size: 0.15rem;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .personal_info p:nth-child(1) {
+    margin-bottom: 0.15rem;
+}
+
+/*
+    :nth-child(n)的详细用法：
+    nth-child(3) 表示选择列表中的第三个元素。
+    nth-child(2n)表示列表中的偶数标签，即选择第2、第4、第6……标签
+    nth-child(2n-1) 表示选择列表中的奇数标签，即选择 第1、第3、第5、第7……标签
+    nth-child(n+3) 表示选择列表中的标签从第3个开始到最后（>=3）
+    nth-child(-n+3) 表示选择列表中的标签从0到3，即小于3的标签(<=3)
+    nth-last-child(3) 表示选择列表中的倒数第3个标签
+*/
+.card_body_box .card_user_info_container .personal_info_box .personal_info p:nth-child(n+2) {
+    margin-bottom: 0.1rem;
+    font-size: 0.11rem;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .more_button {
+    background-color: #2aa12a;
+    margin-top: 0.2rem;
+    width: fit-content;
+    font-size: 0.8rem;
+    border-radius: 10px;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .more_button a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 0.1rem;
+    font-size: 0.11rem;
+}
+
+.card_body_box .card_user_info_container .personal_info_box .more_button i {
+    background-color: white;
+    color: #2aa12a;
+    width: 0.15rem;
+    height: 0.15rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 0.15rem;
+    margin-right: 0.05rem;
+}
+
+@media screen and (max-width:900px) {
+    .card_box {
+        width:100%;
+    }
+    .card_header {
+        background-color: #2aa12a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0.3rem 0;
+        border-radius: 10px 10px 0 0;
+        font-size: 0.35rem;
+    }
+    .card_header .head_info--description h3 {
+        font-size: 0.3rem;
+    }
+    .card_header .head_info--description p {
+        font-size: 0.22rem;
+    }
+    .card_header .head_info img{
+        width: 1rem;
+    }
+    .card_header_social p {
+        font-size: 0.15rem;
+        margin-bottom: 0.1rem;
+    }
+    .card_header_social .social_list {
+        display: flex;
+        justify-content: space-between;
+    }
+    .card_header_social .social_list li {
+        width: 0.5rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        font-size: 0.25rem;
+        text-align: center;
+    }
+    .card_body_box {
+        display: flex;
+        flex-direction: column;
+    }
+    .card_body_box .card_nav_container .card_nav {
+        display: flex;
+        justify-content: space-evenly;
+        font-size: 0.3rem;
+        height: 0.6rem;
+    }
+    
+    .card_body_box .card_nav_container .card_nav li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .card_body_box .card_nav_container .card_nav .active{
+        color: white;
+        background-color: #2aa12a;
+    }
+    
+    .card_body_box .card_nav_container .card_nav li i {
+        font-size: 0.3rem;
+        margin: 0;
+    }
+    
+    .card_body_box .card_nav_container .card_nav li div {
+        font-size: 0.2rem;
+    }
+    
+    .card_body_box .card_nav_container .card_nav li .nav_icon {
+        width: 0.4rem;
+        text-align: center;
+    }
+
+    .card_body_box .card_user_info_container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card_body_box .card_user_info_container .display_img_box {
+        width: 100%;
+    }
+    .card_body_box .card_user_info_container .personal_info_box {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        padding: 0;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .personal_info {
+        flex-direction: column;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .personal_info p:nth-child(1) {
+        font-size: 0.3rem;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .personal_info p:nth-child(n+2) {
+        font-size: 0.3rem;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .more_button {
+        margin: 1rem 0 2rem 0;
+        width: 3rem;
+        height: 0.8rem;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .more_button a {
+        padding: 0.1rem;
+        font-size: 0.25rem;
+    }
+    .card_body_box .card_user_info_container .personal_info_box .more_button i {
+        width: 0.4rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        margin-right: 0.15rem;
+    }
+}
